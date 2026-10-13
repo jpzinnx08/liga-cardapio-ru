@@ -1,0 +1,61 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+:root {
+  --ru-brown: #b45309;
+  --ru-bg: #e2e8f0;
+  --ru-card: #f8fafc;
+  --ru-border: #e2e8f0;
+  --ru-muted: #64748b;
+  --ru-text: #0f172a;
+  --ru-teal: #0f766e;
+}
+ion-content { --background: var(--ru-bg); }
+.ru-wrap { max-width: 420px; margin: 0 auto; min-height: 100%; background: #fff; }
+.ru-header {
+  background: var(--ru-brown); color: #fff; padding: 14px 12px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-weight: 800; font-size: 15px;
+  a, button { color: #fff; background: none; border: 0; font-size: 12px; font-weight: 700; cursor: pointer; }
+}
+.ru-body { padding: 12px; }
+.ru-btn {
+  width: 100%; height: 41px; border: 0; border-radius: 10px; margin-top: 10px;
+  background: var(--ru-brown); color: #fff; font-weight: 700; font-size: 14px; cursor: pointer;
+  &.ghost { background: #fff; color: var(--ru-brown); border: 1px solid var(--ru-brown); }
+  &:disabled { opacity: .5; }
+}

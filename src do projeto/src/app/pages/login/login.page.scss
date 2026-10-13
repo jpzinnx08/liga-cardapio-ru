@@ -1,0 +1,7 @@
+h2 { margin: 6px 0 12px; color: var(--ru-text); font-size: 18px; }
+.field {
+  width: 100%; box-sizing: border-box; height: 41px; margin-bottom: 8px; padding: 0 12px;
+  border: 1px solid var(--ru-border); border-radius: 10px; background: var(--ru-card); font-size: 14px;
+}
+.alert { background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 13px; padding: 10px 12px; border-radius: 10px; }
+.link { width: 100%; margin-top: 14px; background: none; border: 0; color: var(--ru-muted); font-size: 13px; cursor: pointer; }

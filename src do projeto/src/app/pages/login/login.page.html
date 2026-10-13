@@ -1,0 +1,21 @@
+<ion-content>
+  <div class="ru-wrap">
+    <div class="ru-header"><span>Cardapio RU</span></div>
+    <div class="ru-body">
+      <h2>{{ mode === 'login' ? 'Entrar' : 'Criar conta' }}</h2>
+      @if (mode === 'register') {
+        <input class="field" type="text" placeholder="Nome" [(ngModel)]="name" />
+      }
+      <input class="field" type="email" placeholder="E-mail" [(ngModel)]="email" />
+      <input class="field" type="password" placeholder="Senha" [(ngModel)]="password" />
+      @if (error) { <div class="alert">{{ error }}</div> }
+      <button class="ru-btn" (click)="submit()" [disabled]="loading || !email || !password || (mode === 'register' && !name)">
+        {{ mode === 'login' ? 'Entrar' : 'Cadastrar' }}
+      </button>
+      <button class="ru-btn ghost" (click)="google()" [disabled]="loading">Entrar com Google</button>
+      <button class="link" (click)="toggle()">
+        {{ mode === 'login' ? 'Não tem conta? Cadastre-se' : 'Já tem conta? Entrar' }}
+      </button>
+    </div>
+  </div>
+</ion-content>

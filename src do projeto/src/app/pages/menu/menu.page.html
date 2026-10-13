@@ -1,0 +1,33 @@
+<ion-content>
+  <div class="ru-wrap">
+    <div class="ru-header"><span>Cardapio RU</span><button (click)="sair()">sair</button></div>
+    <div class="ru-body">
+      <p class="hello">Olá, {{ nome }}</p>
+
+      <div class="chips">
+        @for (f of filtros; track f.id) {
+          <button class="chip" [class.on]="filtro === f.id" (click)="filtro = f.id">{{ f.label }}</button>
+        }
+      </div>
+
+      @for (i of visiveis; track i.nome) {
+        <div class="card" [class.disabled]="i.esgotado" (click)="toggle(i)">
+          <div>
+            <div class="nome">{{ i.nome }}</div>
+            @if (filtro === 'todos') {
+              <div class="sub">{{ i.tipo }}{{ i.esgotado ? ' · esgotou' : '' }}</div>
+            } @else if (i.esgotado) {
+              <div class="sub"><span class="tag">esgotou</span></div>
+            }
+          </div>
+          @if (i.esgotado && filtro !== 'todos') { <span class="badge off">—</span> }
+          @else { <span class="badge">{{ selecionados.has(i.nome) ? 'ok' : '+' }}</span> }
+        </div>
+      }
+
+      @if (filtro !== 'todos' && temEsgotado) { <div class="alert">Item esgotado nao entra no pedido</div> }
+
+      <button class="ru-btn" [disabled]="selecionados.size === 0" (click)="fazerPedido()">FAZER PEDIDO</button>
+    </div>
+  </div>
+</ion-content>

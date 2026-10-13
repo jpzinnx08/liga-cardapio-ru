@@ -1,0 +1,18 @@
+<ion-content>
+  <div class="ru-wrap">
+    <div class="ru-header"><span>Cardapio RU</span><button (click)="voltar()">voltar</button></div>
+    <div class="ru-body">
+      <div class="ticket">
+        <h2>Pedido realizado!</h2>
+        <p><strong>Aluno:</strong> {{ nome }}</p>
+        <p><strong>Pedido:</strong></p>
+        <ul>
+          @for (i of order.items; track i) { <li>{{ i }}</li> }
+        </ul>
+        <p><strong>Código do pedido:</strong></p>
+        <div class="code">{{ order.code }}</div>
+      </div>
+      <button class="ru-btn" (click)="gerarPdf()">GERAR PDF</button>
+    </div>
+  </div>
+</ion-content>

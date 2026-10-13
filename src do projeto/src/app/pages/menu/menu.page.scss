@@ -1,0 +1,22 @@
+.hello { margin: 0 0 10px; font-size: 14px; color: var(--ru-muted); font-weight: 600; }
+.chips { display: flex; gap: 6px; margin-bottom: 12px; }
+.chip {
+  border: 0; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700;
+  background: #f1f5f9; color: var(--ru-text); cursor: pointer;
+  &.on { background: var(--ru-teal); color: #fff; }
+}
+.card {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--ru-card); border: 1px solid var(--ru-border); border-radius: 10px;
+  padding: 10px 12px; margin-bottom: 8px; cursor: pointer;
+  &.disabled { cursor: default; }
+}
+.nome { font-weight: 800; font-size: 14px; color: var(--ru-text); }
+.sub { font-size: 12px; color: var(--ru-muted); margin-top: 1px; }
+.tag { background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 11px; padding: 1px 7px; border-radius: 999px; }
+.badge {
+  background: #dcfce7; color: #166534; font-size: 11px; font-weight: 700;
+  min-width: 24px; text-align: center; padding: 2px 8px; border-radius: 999px;
+  &.off { background: #e2e8f0; color: var(--ru-muted); }
+}
+.alert { background: #fee2e2; color: #b91c1c; font-weight: 700; font-size: 13px; padding: 10px 12px; border-radius: 10px; margin: 8px 0; }
