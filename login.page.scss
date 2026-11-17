@@ -1,0 +1,13 @@
+.marca { text-align: center; margin: 28px 0 18px;
+  .logo { width: 72px; height: 72px; margin: 0 auto 10px; border-radius: 22px; background: var(--ru-green); display: grid; place-items: center; font-size: 38px; box-shadow: 0 6px 18px rgba(22, 163, 74, .35); }
+  h1 { margin: 0; font-size: 28px; font-weight: 900; color: var(--ru-green-dark); }
+  p { margin: 4px 0 0; color: var(--ru-muted); font-size: 14px; }
+}
+.caixa { background: #fff; border: 1px solid var(--ru-border); border-radius: 20px; padding: 20px; box-shadow: 0 2px 12px rgba(22, 101, 52, .07); }
+h2 { margin: 0 0 12px; font-size: 20px; font-weight: 800; color: var(--ru-text); }
+.campo {
+  width: 100%; box-sizing: border-box; height: 46px; margin-bottom: 10px; padding: 0 14px;
+  border: 1.5px solid var(--ru-border); border-radius: 12px; background: #f8fafc; font-size: 15px; color: var(--ru-text);
+  &:focus { outline: none; border-color: var(--ru-green); }
+}
+.alternar { width: 100%; margin-top: 14px; background: none; border: 0; color: var(--ru-green-dark); font-weight: 700; font-size: 14px; cursor: pointer; }

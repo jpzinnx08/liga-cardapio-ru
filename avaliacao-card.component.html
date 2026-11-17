@@ -1,0 +1,13 @@
+<article class="card">
+  <div class="linha">
+    <h3>{{ avaliacao.nomePrato }}</h3>
+    <span class="nota">{{ avaliacao.nota }}/5</span>
+  </div>
+  <app-estrelas [nota]="avaliacao.nota"></app-estrelas>
+  @if (avaliacao.comentario) {
+    <p class="comentario">"{{ avaliacao.comentario }}"</p>
+  } @else {
+    <p class="comentario vazio">Sem comentário</p>
+  }
+  <div class="rodape">{{ avaliacao.nomeUsuario }} · {{ avaliacao.data | date: 'dd/MM/yyyy HH:mm' }}</div>
+</article>

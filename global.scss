@@ -1,0 +1,75 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* tema claro fixo: identidade visual do RU Avalia */
+
+:root {
+  --ru-green: #16a34a;
+  --ru-green-dark: #166534;
+  --ru-green-soft: #dcfce7;
+  --ru-bg: #f4f9f4;
+  --ru-border: #e2e8f0;
+  --ru-text: #0f172a;
+  --ru-muted: #64748b;
+
+  --ion-color-primary: #16a34a;
+  --ion-color-primary-rgb: 22, 163, 74;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #138f41;
+  --ion-color-primary-tint: #2dac5b;
+  --ion-font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+ion-content { --background: var(--ru-bg); color: var(--ru-text); }
+ion-toolbar ion-button { --color: #fff; font-weight: 700; text-transform: none; }
+
+.container { max-width: 960px; margin: 0 auto; padding: 16px; box-sizing: border-box; }
+.container.estreito { max-width: 440px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px 14px; padding-top: 10px; }
+
+.hero { margin: 4px 0 14px; h1 { margin: 0; font-size: 22px; font-weight: 800; color: var(--ru-green-dark); } p { margin: 4px 0 0; color: var(--ru-muted); font-size: 14px; } }
+
+.btn-ru {
+  display: block; width: 100%; height: 46px; border: 0; border-radius: 12px; margin-top: 12px;
+  background: var(--ru-green); color: #fff; font-weight: 800; font-size: 15px; cursor: pointer;
+  &.ghost { background: #fff; color: var(--ru-green-dark); border: 1.5px solid var(--ru-green); }
+  &:disabled { opacity: .5; cursor: not-allowed; }
+}
+.alerta {
+  background: #fee2e2; color: #b91c1c; font-weight: 600; font-size: 13px; border-radius: 12px;
+  padding: 10px 12px; margin: 10px 0; display: flex; gap: 10px; align-items: center; justify-content: space-between;
+  button { background: #b91c1c; color: #fff; border: 0; border-radius: 8px; padding: 6px 10px; font-weight: 700; cursor: pointer; }
+}

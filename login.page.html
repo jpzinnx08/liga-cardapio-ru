@@ -1,0 +1,26 @@
+<ion-content>
+  <div class="container estreito">
+    <div class="marca">
+      <div class="logo">🍽️</div>
+      <h1>Cardápio RU</h1>
+      <p>Cardápio e avaliações do Restaurante Universitário</p>
+    </div>
+
+    <div class="caixa">
+      <h2>{{ mode === 'login' ? 'Entrar' : 'Criar conta' }}</h2>
+      @if (mode === 'register') {
+        <input class="campo" type="text" placeholder="Nome" [(ngModel)]="name" />
+      }
+      <input class="campo" type="email" placeholder="E-mail" [(ngModel)]="email" />
+      <input class="campo" type="password" placeholder="Senha" [(ngModel)]="password" />
+      @if (error) { <div class="alerta"><span>{{ error }}</span></div> }
+      <button class="btn-ru" (click)="submit()" [disabled]="loading || !email || !password || (mode === 'register' && !name)">
+        {{ mode === 'login' ? 'Entrar' : 'Cadastrar' }}
+      </button>
+      <button class="btn-ru ghost" (click)="google()" [disabled]="loading">Entrar com Google</button>
+      <button class="alternar" (click)="toggle()">
+        {{ mode === 'login' ? 'Não tem conta? Cadastre-se' : 'Já tem conta? Entrar' }}
+      </button>
+    </div>
+  </div>
+</ion-content>

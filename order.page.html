@@ -1,0 +1,20 @@
+<app-topbar>
+  <ion-button (click)="voltar()">Cardápio</ion-button>
+</app-topbar>
+
+<ion-content>
+  <div class="container estreito">
+    <div class="ticket">
+      <div class="ok">✅</div>
+      <h2>Bandeja confirmada!</h2>
+      <p><strong>Aluno:</strong> {{ nome }}</p>
+      <p><strong>Bandeja:</strong></p>
+      <ul>
+        @for (i of order.items; track i) { <li>{{ i }}</li> }
+      </ul>
+      <p><strong>Código do pedido:</strong></p>
+      <div class="codigo">{{ order.code }}</div>
+    </div>
+    <button type="button" class="btn-ru" (click)="gerarPdf()">GERAR PDF</button>
+  </div>
+</ion-content>

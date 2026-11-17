@@ -1,0 +1,37 @@
+<article class="card" [class.indisponivel]="!prato.disponivel" [class.selecionado]="selecionado">
+  @if (destaque) { <span class="medalha">🏆 Mais bem avaliado</span> }
+
+  <div class="topo">
+    <div class="icone" aria-hidden="true">{{ prato.icone ?? '🍽️' }}</div>
+    <div class="info">
+      <h3>{{ prato.nome }}</h3>
+      <div class="tags">
+        <span class="tag" [class.vegano]="prato.categoria === 'vegano'">
+          {{ prato.categoria === 'vegano' ? '🌱 Veg' : 'Comum' }}
+        </span>
+        <span class="status" [class.off]="!prato.disponivel">
+          {{ prato.disponivel ? 'Disponível' : 'Esgotado' }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  @if (prato.descricao) { <p class="desc">{{ prato.descricao }}</p> }
+
+  <div class="nota">
+    <app-estrelas [nota]="prato.media"></app-estrelas>
+    @if (prato.quantidade > 0) {
+      <strong>{{ mediaTexto }}</strong>
+      <span class="qtd">({{ prato.quantidade }} {{ prato.quantidade === 1 ? 'avaliação' : 'avaliações' }})</span>
+    } @else {
+      <span class="qtd">Sem avaliações ainda</span>
+    }
+  </div>
+
+  <div class="acoes">
+    <button type="button" class="btn ghost" (click)="onAvaliar()">⭐ Avaliar</button>
+    <button type="button" class="btn" [class.on]="selecionado" [class.bloqueado]="!prato.disponivel" [attr.aria-disabled]="!prato.disponivel" (click)="onSelecionar()">
+      {{ !prato.disponivel ? 'Esgotado' : selecionado ? '✓ Na bandeja' : 'Escolher' }}
+    </button>
+  </div>
+</article>

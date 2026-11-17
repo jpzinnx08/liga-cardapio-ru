@@ -1,0 +1,78 @@
+<app-topbar>
+  <ion-button (click)="irAvaliacoes()">Avaliações</ion-button>
+  <ion-button (click)="sair()">Sair</ion-button>
+</app-topbar>
+
+<ion-content>
+  <div class="container">
+    <section class="hero">
+      <h1>Olá, {{ nome }} 👋</h1>
+      <p>Veja o cardápio de hoje, escolha sua refeição e avalie os pratos.</p>
+    </section>
+
+    @if (destaque(); as d) {
+      <div class="destaque">
+        <span class="trofeu">🏆</span>
+        <div>
+          <small>Mais bem avaliado</small>
+          <strong>{{ d.nome }}</strong>
+        </div>
+        <div class="nota-d">
+          <app-estrelas [nota]="d.media"></app-estrelas>
+          <span>{{ mediaDestaque }} · {{ d.quantidade }} {{ d.quantidade === 1 ? 'avaliação' : 'avaliações' }}</span>
+        </div>
+      </div>
+    }
+
+    <div class="chips" role="tablist" aria-label="Filtrar por categoria">
+      @for (f of filtros; track f.id) {
+        <button type="button" class="chip" [class.on]="filtro() === f.id" (click)="filtrar(f.id)">{{ f.label }}</button>
+      }
+    </div>
+
+    @if (erro()) {
+      <div class="alerta"><span>{{ erro() }}</span><button type="button" (click)="tentarNovamente()">Tentar de novo</button></div>
+    }
+
+    <div class="grid">
+      @for (p of pratos(); track p.id) {
+        <app-prato-card
+          [prato]="p"
+          [selecionado]="selecionados().includes(p.id)"
+          [destaque]="destaque()?.id === p.id"
+          (avaliar)="abrirAvaliacao($event)"
+          (selecionar)="alternarSelecao($event)">
+        </app-prato-card>
+      }
+    </div>
+
+    <button type="button" class="btn-ru" [disabled]="total() === 0" (click)="fazerPedido()">
+      CONFIRMAR BANDEJA {{ total() ? '(' + total() + ')' : '' }}
+    </button>
+  </div>
+</ion-content>
+
+<app-avaliacao-modal
+  [prato]="pratoAvaliando()"
+  [enviando]="enviando()"
+  (enviar)="enviarAvaliacao($event)"
+  (cancelar)="fecharModal()">
+</app-avaliacao-modal>
+
+<app-bandeja-modal
+  [aberto]="confirmando()"
+  [pratos]="bandeja()"
+  [total]="total()"
+  [enviando]="confirmandoEnvio()"
+  (confirmar)="confirmarBandeja()"
+  (cancelar)="fecharConfirmacao()">
+</app-bandeja-modal>
+
+<ion-toast
+  [isOpen]="!!toast()"
+  [message]="toast()?.msg"
+  [color]="toast()?.cor"
+  position="top"
+  [duration]="3500"
+  (didDismiss)="toast.set(null)">
+</ion-toast>

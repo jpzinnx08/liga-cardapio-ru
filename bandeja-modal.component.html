@@ -1,0 +1,32 @@
+<ion-modal [isOpen]="aberto" (didDismiss)="cancelar.emit()">
+  <ng-template>
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>Confirmar bandeja</ion-title>
+        <ion-buttons slot="end"><ion-button (click)="cancelar.emit()">Fechar</ion-button></ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="corpo">
+        <p class="rotulo">Sua bandeja</p>
+        <ul class="lista">
+          @for (p of pratos; track p.id) {
+            <li>
+              <span class="icone">{{ p.icone ?? '🍽️' }}</span>
+              <span class="nome">{{ p.nome }}</span>
+              <span class="tag" [class.vegano]="p.categoria === 'vegano'">{{ p.categoria === 'vegano' ? '🌱 Veg' : 'Comum' }}</span>
+            </li>
+          }
+        </ul>
+        <div class="total">Total: <strong>{{ total }} {{ total === 1 ? 'prato' : 'pratos' }}</strong></div>
+
+        <div class="botoes">
+          <button type="button" class="btn ghost" [disabled]="enviando" (click)="cancelar.emit()">Voltar</button>
+          <button type="button" class="btn" [disabled]="enviando || total === 0" (click)="confirmar.emit()">
+            {{ enviando ? 'Confirmando...' : 'Confirmar bandeja' }}
+          </button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

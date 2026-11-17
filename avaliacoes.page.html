@@ -1,0 +1,32 @@
+<app-topbar>
+  <ion-button (click)="voltar()">Cardápio</ion-button>
+</app-topbar>
+
+<ion-content>
+  <div class="container">
+    <section class="hero">
+      <h1>Avaliações dos alunos</h1>
+      <p>{{ avaliacoes().length }} {{ avaliacoes().length === 1 ? 'avaliação registrada' : 'avaliações registradas' }}</p>
+    </section>
+
+    @if (erro()) {
+      <div class="alerta"><span>{{ erro() }}</span><button type="button" (click)="tentarNovamente()">Tentar de novo</button></div>
+    }
+
+    @if (carregando()) {
+      <p class="vazio">Carregando avaliações...</p>
+    } @else if (avaliacoes().length === 0 && !erro()) {
+      <div class="vazio">
+        <div class="emoji">🍽️</div>
+        <p>Nenhuma avaliação ainda. Volte ao cardápio e seja o primeiro a avaliar um prato!</p>
+        <ion-button (click)="voltar()">Ir para o cardápio</ion-button>
+      </div>
+    }
+
+    <div class="grid">
+      @for (a of avaliacoes(); track a.id) {
+        <app-avaliacao-card [avaliacao]="a"></app-avaliacao-card>
+      }
+    </div>
+  </div>
+</ion-content>

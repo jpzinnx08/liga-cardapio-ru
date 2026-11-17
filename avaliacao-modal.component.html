@@ -1,0 +1,36 @@
+<ion-modal [isOpen]="!!prato" (didDismiss)="cancelar.emit()">
+  <ng-template>
+    <ion-header class="ion-no-border">
+      <ion-toolbar>
+        <ion-title>Avaliar prato</ion-title>
+        <ion-buttons slot="end"><ion-button (click)="cancelar.emit()">Fechar</ion-button></ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="corpo">
+        <div class="prato">
+          <span class="icone">{{ prato?.icone ?? '🍽️' }}</span>
+          <h2>{{ prato?.nome }}</h2>
+        </div>
+
+        <p class="rotulo">Sua nota <small>(obrigatória)</small></p>
+        <div class="estrelas" role="radiogroup" aria-label="Nota de 1 a 5">
+          @for (n of opcoes; track n) {
+            <button type="button" class="estrela" [class.on]="nota >= n" [attr.aria-label]="n + ' estrelas'" (click)="escolher(n)">★</button>
+          }
+        </div>
+        @if (semNota) { <p class="erro">Escolha de 1 a 5 estrelas para enviar.</p> }
+
+        <p class="rotulo">Comentário <small>(opcional)</small></p>
+        <textarea rows="4" maxlength="500" placeholder="Ex.: Muito gostosa, estava bem temperada." [(ngModel)]="comentario"></textarea>
+
+        <div class="botoes">
+          <button type="button" class="btn ghost" [disabled]="enviando" (click)="cancelar.emit()">Cancelar</button>
+          <button type="button" class="btn" [disabled]="enviando" (click)="confirmar()">
+            {{ enviando ? 'Enviando...' : 'Enviar avaliação' }}
+          </button>
+        </div>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

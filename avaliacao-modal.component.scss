@@ -1,0 +1,22 @@
+ion-toolbar { --background: var(--ru-green); --color: #fff; }
+ion-content { --background: #fff; }
+.corpo { padding: 20px; max-width: 480px; margin: 0 auto; }
+.prato { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.icone { width: 52px; height: 52px; border-radius: 14px; background: var(--ru-green-soft); display: grid; place-items: center; font-size: 28px; }
+h2 { margin: 0; font-size: 20px; font-weight: 800; color: var(--ru-text); }
+.rotulo { margin: 16px 0 6px; font-weight: 700; color: var(--ru-text); small { font-weight: 500; color: var(--ru-muted); } }
+.estrelas { display: flex; gap: 6px; }
+.estrela { background: none; border: 0; font-size: 40px; line-height: 1; color: #d1d5db; cursor: pointer; padding: 0; &.on { color: #f59e0b; } }
+.erro { margin: 6px 0 0; color: #b91c1c; font-size: 13px; font-weight: 600; }
+textarea {
+  width: 100%; box-sizing: border-box; padding: 12px; border: 1.5px solid var(--ru-border); border-radius: 12px;
+  font: inherit; font-size: 14px; resize: vertical; background: #f8fafc; color: var(--ru-text);
+  &:focus { outline: none; border-color: var(--ru-green); }
+}
+.botoes { display: flex; gap: 10px; margin-top: 20px; }
+.btn {
+  flex: 1; height: 44px; border-radius: 12px; border: 0; cursor: pointer; font-weight: 700; font-size: 15px;
+  background: var(--ru-green); color: #fff;
+  &.ghost { background: #fff; color: var(--ru-green-dark); border: 1.5px solid var(--ru-green); }
+  &:disabled { opacity: .6; cursor: default; }
+}
